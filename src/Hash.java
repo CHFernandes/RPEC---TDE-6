@@ -15,19 +15,23 @@ public class Hash {
 
     void insere(int chave){
         int i = hashing(chave);
-        Lista linha = new Lista(i, chave);
         if (vetor[i] == null){
-            vetor[i] = linha;
-        }else {
-            Lista atual = vetor[i];
-
-            while (atual.Proximo() != null){
-                if(linha.Chave() <= atual.Chave()){
-
-                }
-            }
-            vetor[i].Encadeia(linha);
+            vetor[i] = new Lista();
         }
+        vetor[i].insere_ordenado(chave);
+
     }
 
+    boolean busca(int chave){
+        int i = hashing(chave);
+        Lista busca = vetor[i];
+
+        if (vetor[i] == null){
+            return false;
+        }else if (busca.acha_no(chave).getChave() != -1){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
